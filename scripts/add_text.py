@@ -76,7 +76,13 @@ docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
 
 def get_text(page, old, create):
-    """Get the old text."""
+    """
+    Get the old text.
+
+    @param old:
+    @type old: str
+    @rtype: str
+    """
     if old is None:
         try:
             text = page.get()
@@ -98,7 +104,25 @@ def get_text(page, old, create):
 
 
 def put_text(page, new, summary, count, asynchronous=False):
-    """Save the new text."""
+    """
+    Save the new text.
+
+    @param page: wiki page
+    @param new: new text to put
+    @param summary:
+    @param count: number of times the server can be retried if error
+    @param asynchronous=False:
+    @type page: dict
+    @type new: str
+    @type summary:
+    @type count: int
+    @type asynchronous: bool
+
+    Raise: ServerError
+
+    return: if putting new text in page was successful, unless error then return None
+    @rtype: bool
+    """
     page.text = new
     try:
         page.save(summary=summary, asynchronous=asynchronous,

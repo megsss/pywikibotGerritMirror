@@ -1827,6 +1827,9 @@ class Request(MutableMapping):
         return False
 
     def _handle_warnings(self, result):
+        """
+        Handle warnings when logging in
+        """
         if 'warnings' in result:
             for mod, warning in result['warnings'].items():
                 if mod == 'info':
