@@ -722,6 +722,8 @@ class CategoryMoveRobot(CategoryPreprocess):
         @param self: Generator containing pages or categories.
         @param moved_page: Category page to delete
         @param moved_talk: Talk page to delete
+        @type moved_page: pywikibot.page.BasePage
+        @type moved_talk: pywikibot.page.BasePage
 
         """
         if moved_page and self.oldcat.exists():
@@ -761,12 +763,12 @@ class CategoryMoveRobot(CategoryPreprocess):
     @staticmethod
     def check_move(name, old_page, new_page):
         """Return if the old page can be safely moved to the new page.
-        @param name:
-        @type name:
+        @param name: Title of the new page
+        @type name: str
         @param old_page: Page to be moved
-        @type old_page: pywikibot.page
+        @type old_page: pywikibot.page.BasePage
         @param new_page: Page to be moved to
-        @type new_page: pywikibot.page
+        @type new_page: pywikibot.page.BasePage
         @return: True if possible to move page, False if not page move not possible
         @rtype: bool
 
